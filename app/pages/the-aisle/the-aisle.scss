@@ -1,0 +1,16 @@
+.the-aisle-page {
+  ion-card {
+    ion-row {
+      border-top: 1px solid #F0EFED;
+
+      ion-col {
+        padding: 0;
+
+        button {
+          width: 100%;
+          border-right: 1px solid #F0EFED;
+        }
+      }
+    }
+  }
+}

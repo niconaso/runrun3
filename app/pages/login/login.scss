@@ -1,0 +1,42 @@
+.login-page {
+  img {
+    max-width: 70%;
+    margin-top: 20%;
+    margin-bottom: 15%;
+  }
+
+  ion-content {
+    background: url('../../img/login-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: initial;
+    margin: auto;
+    z-index: 2;
+
+    .item-input {
+      background-color: rgba(0,0,0,0.1);
+
+      color: #fff;
+
+      ::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #fff;
+      }
+
+      ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #fff;
+      }
+
+      :-ms-input-placeholder {
+        /* IE 10+ */
+        color: #fff;
+      }
+
+      :-moz-placeholder {
+        /* Firefox 18- */
+        color: #fff;
+      }
+    }
+  }
+}

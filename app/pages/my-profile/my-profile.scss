@@ -1,0 +1,12 @@
+.my-profile-page {
+  .profile-header {
+    position: relative;;
+    background: url('http://ionicframework.com/dist/preview-app/www/img/card-saopaolo.png');
+    margin-bottom: 100px;
+
+    ion-card {
+      position: relative;
+      top: 80px;
+    }
+  }
+}

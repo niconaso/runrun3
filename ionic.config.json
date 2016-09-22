@@ -1,0 +1,12 @@
+{
+  "name": "runrun-3-v2",
+  "app_id": "40e1f965",
+  "v2": true,
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "http://192.168.150.40:8080",
+      "proxyUrl": "http://192.168.150.40:8080"
+    }
+  ]
+}

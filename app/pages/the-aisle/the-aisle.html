@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar secondary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pasillo</ion-title>
+    <ion-buttons end>
+      <button>
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button (click)="showNotifications()">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" showCancelButton="true" cancelButtonText="Cancelar"></ion-searchbar>
+
+  <ion-list [virtualScroll]="posts" approxItemHeight="400px" approxItemWidth="100%" approxHeaderHeight="61px" approxFooterHeight="44px" no-lines>
+
+    <ion-card *virtualItem="let post; let i = index">
+      <ion-item>
+        <ion-avatar item-left>
+          <ion-img src="http://ionicframework.com/dist/preview-app/www/img/marty-avatar.png"></ion-img>
+        </ion-avatar>
+        <h2>Marty McFly</h2>
+        <p>{{post.createdAt | amTimeAgo}}
+        </p>
+      </ion-item>
+
+      <ion-img src="https://unsplash.it/300/200/?image={{i}}" width="100%" height="200"></ion-img>
+
+      <ion-card-content>
+        <p>{{post.body}}</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col width-20>
+          <button clear small>
+            <ion-icon name="heart-outline"></ion-icon>
+            {{post.likes}}
+          </button>
+        </ion-col>
+        <ion-col width-20>
+          <button clear small (click)="showComments($event, item)">
+            <ion-icon name="chatbubbles"></ion-icon>
+            {{post.comments}}
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <button large fab fab-bottom fab-right fab-fixed (click)="newPost();">
+    <ion-icon name="add"></ion-icon>
+  </button>
+
+</ion-content>

@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile-header">
+    <ion-card>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <ion-img src="http://runrun.fluxit.com.ar/images/nicolas.naso"></ion-img>
+        </ion-thumbnail>
+        <h2>Nicolas Naso</h2>
+        <p>Desarrollador</p>
+
+        <button round padding-top>Mas sobre mi</button>
+      </ion-item>
+
+      <ion-row text-center>
+        <ion-col>
+          <h1>3+</h1>
+          Años en Flux
+        </ion-col>
+        <ion-col>
+          <h1>27</h1>
+          Proyectos
+        </ion-col>
+        <ion-col>
+          <h1>2478</h1>
+          Interacciones en RunRun
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-left>
+        <ion-img src="http://ionicframework.com/dist/preview-app/www/img/marty-avatar.png"></ion-img>
+      </ion-avatar>
+      <h2>Marty McFly</h2>
+      <p>Hace unos segundos</p>
+    </ion-item>
+
+    <ion-img src="https://unsplash.it/300/200/?image=0" width="100%" height="200"></ion-img>
+
+    <ion-card-content>
+      <p>fsdfsfsdfsdfdsfsdfsd</p>
+    </ion-card-content>
+
+    <ion-item>
+      <button clear item-left>
+        <ion-icon name="heart"></ion-icon>
+        12 likes</button>
+      <button clear item-right (click)="itemTapped($event, item)">
+        <ion-icon name="text"></ion-icon>
+        4 comentarios</button>
+    </ion-item>
+  </ion-card>
+
+</ion-content>
