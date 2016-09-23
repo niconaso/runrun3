@@ -1,7 +1,6 @@
 <ion-content padding align="center">
   <img src="img/runrun3.png" alt="RunRun 3"/>
   <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
-
     <ion-list inset>
       <ion-item>
         <ion-input type="text" placeholder="usuario" formControlName="username"></ion-input>
@@ -9,6 +8,11 @@
 
       <ion-item>
         <ion-input type="password" placeholder="contraseña" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item item-left margin-top>
+        <ion-label light>Recordar contraseña</ion-label>
+        <ion-checkbox checked="true"></ion-checkbox>
       </ion-item>
     </ion-list>
     <div padding>

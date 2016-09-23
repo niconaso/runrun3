@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
+import { Control } from '@angular/common';
 import {NavController, NavParams, ModalController} from 'ionic-angular';
 import {TimeAgoPipe} from 'angular2-moment/TimeAgoPipe';
+
+import { Post } from '../../providers/post/post';
+import 'rxjs/add/operator/debounceTime';
 
 import {PostDetailPage} from '../post-detail/post-detail';
 import {NewPostPage} from '../new-post/new-post';
@@ -9,58 +13,40 @@ import {NotificationsPage} from '../notifications/notifications'
 
 @Component({
   templateUrl: 'build/pages/the-aisle/the-aisle.html',
-  pipes: [TimeAgoPipe]
+  pipes: [TimeAgoPipe],
+  providers: [Post]
 })
 export class TheAislePage {
-  posts: Array<{ body: string, likes: number, comments: number, createdAt: Date }> = [];
+  searchTerm: string = '';
+  searchControl: Control;
+  searching: any = false;
+  posts: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
-    this.initializeItems();
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private postService: Post) {
+    //this.initializeItems();
+
+    this.searchControl = new Control();
   }
 
-  randomString(length, chars) {
-    var mask = '';
-    if (chars.indexOf('a') > -1) mask += 'abcdefghijklmnopqrstuvwxyz';
-    if (chars.indexOf('A') > -1) mask += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    if (chars.indexOf('#') > -1) mask += '0123456789';
-    if (chars.indexOf('!') > -1) mask += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
-    var result = '';
-    for (var i = length; i > 0; --i) result += mask[Math.floor(Math.random() * mask.length)];
-    return result;
+  ionViewLoaded() {
+    this.setFilteredItems();
+
+    this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
+      this.searching = false;
+      this.setFilteredItems();
+    });
   }
 
-  randomNumber(length) {
-    return Math.floor(Math.random() * length + 1);
+  onSearchInput() {
+    this.searching = true;
   }
 
-  initializeItems() {
-    for (let i = 1; i < 200; i++) {
-      this.posts.push({
-        body: this.randomString(this.randomNumber(200), '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
-        likes: this.randomNumber(50),
-        comments: this.randomNumber(50),
-        createdAt: new Date()
-      });
-    }
-  }
-
-  getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.posts = this.posts.filter((post) => {
-        return (post.body.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
+  setFilteredItems() {
+    this.posts = this.postService.filterItems(this.searchTerm);
   }
 
   newPost() {
-    let modal = this.modalCtrl.create(NewPostPage);
+    let modal = this.modalCtrl.create(NewPostPage, {}, { enableBackdropDismiss: false });
     modal.present();
   }
 

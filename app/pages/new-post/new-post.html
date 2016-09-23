@@ -7,36 +7,41 @@
     </ion-buttons>
 
     <ion-buttons right>
-      <button royal>Publicar
+      <button royal (click)="dismiss();">
+        Publicar
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <ion-item item-left no-lines>
-    <ion-thumbnail item-left>
+<ion-content>
+  <ion-item no-lines>
+    <ion-thumbnail item-left small>
       <ion-img src="http://runrun.fluxit.com.ar/images/nicolas.naso"></ion-img>
     </ion-thumbnail>
     <h2>Nicolas Naso</h2>
     <p>Desarrollador</p>
   </ion-item>
-  <ion-textarea padding-horizontal></ion-textarea>
+  <ion-item no-lines text-wrap>
+    <ion-textarea rows="5" placeholder="¿Que estas pensando?"></ion-textarea>
+  </ion-item>
+
+  <div class="image-fit" [ngClass]="{fullscreen: isActive}" (click)="isActive = !isActive" *ngIf="base64Image">
+    <!-- <ion-img src="http://runrun.fluxit.com.ar/wp-content/uploads/bpfb/36_0-12002900-1474459583_primavera-en-flux.png"></ion-img> -->
+    <img [src]="base64Image" />
+  </div>
 </ion-content>
 
 <ion-footer>
+  <ion-toolbar>
+    <ion-buttons left>
+      <button dark (click)="takePicture()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+      <button dark>
+        <ion-icon name="happy"></ion-icon>
+      </button>
+    </ion-buttons>
 
-    <ion-row>
-      <ion-col width-20>
-        <button clear>
-          <ion-icon name="camera"></ion-icon>
-        </button>
-      </ion-col>
-      <ion-col width-20>
-        <button clear>
-          <ion-icon name="happy"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-
+  </ion-toolbar>
 </ion-footer>

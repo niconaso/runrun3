@@ -1,21 +1,24 @@
 .new-post-page {
-  ion-textarea {
-    height: 100%;
+  .image-fit {
+    position: absolute;;
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
 
-    textarea {
-      height: 100%;
-    }
-  }
+    &.fullscreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: auto;
+      width: auto;
+      max-height: none;
+      background: rgba(0, 0, 0, 0.9);
 
-  ion-row {
-    border-top: 1px solid #F0EFED;
-
-    ion-col {
-      padding: 0;
-
-      button {
-        width: 100%;
-        border-right: 1px solid #F0EFED;
+      img {
+        position: absolute;
+        top: 25%;
       }
     }
   }
