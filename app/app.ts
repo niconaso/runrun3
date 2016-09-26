@@ -1,6 +1,6 @@
 import {Component, ViewChild, enableProdMode} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
-import {StatusBar, Splashscreen} from 'ionic-native';
+import {StatusBar, Splashscreen, Keyboard} from 'ionic-native';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
 import * as moment from 'moment';
 import 'moment/min/locales.min';
@@ -32,7 +32,7 @@ class RunRunApp {
     // Moment Locale
     moment.locale('es');
 
-    this.checkAuthorized();
+
     this.initializeApp();
 
     // set our app's pages
@@ -46,10 +46,11 @@ class RunRunApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      //StatusBar.styleDefault();
+      StatusBar.styleDefault();
       //StatusBar.backgroundColorByHexString('#00D3BC');
-      StatusBar.backgroundColorByHexString('#06ad9b');
+      //StatusBar.backgroundColorByHexString('#06ad9b');
 
+      this.checkAuthorized();
       this.hideSplashScreen();
     });
   }
