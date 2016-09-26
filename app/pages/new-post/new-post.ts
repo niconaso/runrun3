@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 import {Camera} from 'ionic-native';
 
+import {Focuser} from "../../components/focuser/focuser";
 
 /*
   Generated class for the NewPostPage page.
@@ -10,13 +11,13 @@ import {Camera} from 'ionic-native';
   Ionic pages and navigation.
 */
 @Component({
-  templateUrl: 'build/pages/new-post/new-post.html'
+  templateUrl: 'build/pages/new-post/new-post.html',
+  directives: [Focuser]
 })
 export class NewPostPage {
    public base64Image: string;
 
   constructor(public viewCtrl: ViewController) {
-
   }
 
   takePicture(){
@@ -34,5 +35,9 @@ export class NewPostPage {
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  focusInput(input) {
+    input.setFocus();
   }
 }

@@ -22,4 +22,9 @@
       }
     }
   }
+
+  .item-input.input-has-focus .item-inner {
+    border-bottom-width: 0px;
+    box-shadow: none;
+  }
 }

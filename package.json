@@ -40,7 +40,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-image-picker"
+    "cordova-plugin-image-picker",
+    "cordova-plugin-camera"
   ],
   "cordovaPlatforms": []
 }
