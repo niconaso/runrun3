@@ -1,5 +1,5 @@
 import { Directive, Renderer, ElementRef } from '@angular/core';
-import { Keyboard} from 'ionic-native';
+import { Keyboard } from 'ionic-native';
 /*
   Generated class for the Focuser directive.
 

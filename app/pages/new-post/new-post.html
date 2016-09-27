@@ -17,25 +17,29 @@
 <ion-content (click)="focusInput(input);">
   <ion-item no-lines>
     <ion-thumbnail item-left small>
-      <img src="http://runrun.fluxit.com.ar/images/nicolas.naso" />
+      <img src="http://runrun.fluxit.com.ar/images/nicolas.naso"/>
     </ion-thumbnail>
     <h2>Nicolas Naso</h2>
     <p>Desarrollador</p>
   </ion-item>
   <ion-item no-lines text-wrap>
-    <ion-textarea rows="5" #input placeholder="¿Que estas pensando?" focuser></ion-textarea>
+    <ion-textarea rows="5" #input placeholder="¿Que estas pensando?"></ion-textarea>
   </ion-item>
 
-  <div class="image-fit" [ngClass]="{fullscreen: isActive}" (click)="isActive = !isActive" *ngIf="base64Image">
-    <!-- <ion-img src="http://runrun.fluxit.com.ar/wp-content/uploads/bpfb/36_0-12002900-1474459583_primavera-en-flux.png"></ion-img> -->
-    <img [src]="base64Image" />
+  <div class="image-fit" *ngFor="let image of base64Images">
+    <img [src]="image"/>
   </div>
+
+  <!-- <div class="image-fit" [ngClass]="{fullscreen: isActive}" (click)="isActive = !isActive" *ngIf="base64Images.length">
+
+    <img [src]="base64Image" />
+  </div> -->
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-buttons left>
-      <button dark (click)="takePicture()">
+      <button dark (click)="presentActionSheet()">
         <ion-icon name="camera"></ion-icon>
       </button>
       <button dark>
