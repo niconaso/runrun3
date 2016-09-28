@@ -1,4 +1,4 @@
-import {Component, ViewChild, enableProdMode} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar, Splashscreen, Keyboard} from 'ionic-native';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
@@ -88,9 +88,6 @@ class RunRunApp {
     this.nav.setRoot(LoginPage);
   }
 }
-
-// enable the production mod
-enableProdMode();
 
 // bootstrap app
 ionicBootstrap(RunRunApp, [], {
