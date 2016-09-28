@@ -3,7 +3,7 @@
   <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
     <ion-list inset>
       <ion-item>
-        <ion-input type="text" placeholder="usuario" formControlName="username"></ion-input>
+        <ion-input type="text" placeholder="usuario" formControlName="username" autocapitalize="none"></ion-input>
       </ion-item>
 
       <ion-item>
