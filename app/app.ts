@@ -1,5 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
+import {Component, ViewChild, provide} from '@angular/core';
+import {Http} from '@angular/http'
+import {ionicBootstrap, Platform, MenuController, Nav, LocalStorage} from 'ionic-angular';
 import {StatusBar, Splashscreen, Keyboard} from 'ionic-native';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
 import * as moment from 'moment';
@@ -14,7 +15,15 @@ import {MyProfilePage} from './pages/my-profile/my-profile';
 
 @Component({
   templateUrl: 'build/app.html',
-  providers: [AuthService]
+  providers: [
+    provide(AuthHttp, {
+      useFactory: (http) => {
+        return new AuthHttp(new AuthConfig(), http);
+      },
+      deps: [Http]
+    }),
+    AuthService
+  ]
 })
 class RunRunApp {
   @ViewChild(Nav) nav: Nav;

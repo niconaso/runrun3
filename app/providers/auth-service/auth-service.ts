@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Storage } from 'ionic-angular';
+import { LocalStorage, Storage } from 'ionic-angular';
 
-import {tokenNotExpired} from 'angular2-jwt';
+import {AuthHttp, JwtHelper, tokenNotExpired} from 'angular2-jwt';
+
 /*
   Generated class for the AuthService provider.
 
@@ -15,6 +16,9 @@ import {tokenNotExpired} from 'angular2-jwt';
 @Injectable()
 export class AuthService {
   ENDPOINT: string = 'http://192.168.150.40:8080/runrun3backend/api/users/login';
+
+  jwtHelper: JwtHelper = new JwtHelper();
+  local: Storage = new Storage(LocalStorage);
 
   // We need to set the content type for the server
   contentHeader: Headers = new Headers({ "Content-Type": "application/json" });
@@ -50,5 +54,9 @@ export class AuthService {
 
   isAuthenticated() {
     return window.localStorage.getItem('id_token');
+  }
+
+  public static authenticated() {
+    return tokenNotExpired();
   }
 }
